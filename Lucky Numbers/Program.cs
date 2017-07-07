@@ -54,7 +54,6 @@ namespace Lucky_Numbers
 
             Console.WriteLine("For every number guessed correctly the user will receive 1$, for a total of 6$ for any person who guesses all six lucky numbers correctly!");
             
-
             int winnings = 0;    
             
             for (int k = 0; k < 6; k++)
@@ -69,6 +68,10 @@ namespace Lucky_Numbers
             }
             Console.WriteLine("You got" + winnings + " correct!");
             Console.WriteLine("You've won " + winnings + "$");
+
+            //Step 4
+
+            Console.WriteLine("Would you like to play again?!");
 
 
 
