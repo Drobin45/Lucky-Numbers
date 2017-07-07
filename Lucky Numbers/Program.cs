@@ -39,10 +39,11 @@ namespace Lucky_Numbers
             Console.WriteLine("And now to display our six lucky numbers!");
             int[] luckyNumb = new int[6];
 
+            Random numGenerate = new Random();
             for (int j = 0; j< 6; j++)
             {
-                Random numGenerate = new Random();
-                Console.WriteLine(numGenerate.Next(firstNum, lastNum));
+                luckyNumb[j] = numGenerate.Next(firstNum, lastNum);
+                Console.WriteLine("Lucky Number: " + luckyNumb[j]);
             }
             
 
