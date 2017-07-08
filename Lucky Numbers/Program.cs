@@ -14,68 +14,84 @@ namespace Lucky_Numbers
             //Initializing beginning text for program. Asking user to input the first and last possible numbers...
             //... used for random number generation(RNG from here forward)
 
-            Console.WriteLine("Welcome to the world of gambling! Enjoy the following program responsibly!");
-            Console.WriteLine("Please type starting number for number generation.");
-            int firstNum = int.Parse(Console.ReadLine());
-            Console.WriteLine("Please type ending number for number generation.");
-            int lastNum = int.Parse(Console.ReadLine());
-
-
-            //Allowing user to input data for the array 'numbersGuessed'. 
-            //Created an empty array, and maee a loop that allows user to input his/her 6 gambling numbers
-            Console.WriteLine("Please type your 6 lottery guesses separately");            
-            int[] numbersGuessed = new int[6];         
-            
-            for (int i = 0; i < 6; i++)
+            //Entire program set within massive do-while loop (for step four)
+            string replay;
+            do
             {
-                numbersGuessed[0] = int.Parse(Console.ReadLine());
-                if (numbersGuessed[0] >= lastNum)
+                Console.WriteLine("Welcome to the world of gambling! Enjoy the following program responsibly!");
+                Console.WriteLine("Please type starting number for number generation.");
+                int firstNum = int.Parse(Console.ReadLine());
+                Console.WriteLine("Please type ending number for number generation.");
+                int lastNum = int.Parse(Console.ReadLine());
+
+
+                //Allowing user to input data for the array 'numbersGuessed'. 
+                //Created an empty array, and made a loop that allows user to input his/her 6 gambling numbers
+                Console.WriteLine("Please type your 6 lottery guesses separately");
+                int[] numbersGuessed = new int[6];
+
+                for (int i = 0; i < 6; i++)
                 {
-                    Console.WriteLine("Please enter a valid number");
-                }
-            }
-
-            //Step two
-            //Creating new array, and making program enter 6 random numbers between users specified first/last numbers within new array.
-            Console.WriteLine("And now to display our six lucky numbers!");
-            int[] luckyNumb = new int[6];
-
-            Random numGenerate = new Random();
-            for (int j = 0; j< 6; j++)
-            {
-                luckyNumb[j] = numGenerate.Next(firstNum, lastNum);
-                Console.WriteLine("Lucky Number: " + luckyNumb[j]);
-            }
-
-            //Step three
-            //Program announces the rate of winnings to the user ( every win gains the user 1$).
-            //Use nested loop to have program confirm if player's guesses are equal to the random numbers generated.
-            //If-else used to add +1$ to winnings for ever iteration of the loop that is found to be equal.
-
-            Console.WriteLine("For every number guessed correctly the user will receive 1$, for a total of 6$ for any person who guesses all six lucky numbers correctly!");
-            
-            int winnings = 0;    
-            
-            for (int k = 0; k < 6; k++)
-            {                
-                for (int l = 0; l < 6; l++)
-                {
-                    if(numbersGuessed[l] == luckyNumb[k])
+                    numbersGuessed[0] = int.Parse(Console.ReadLine());
+                    if (numbersGuessed[0] >= lastNum)
                     {
-                        winnings++;
-                    }                 
-                }                
+                        Console.WriteLine("Please enter a valid number");
+                    }
+                }
+
+                //Step two
+                // This sections creates a new array, and designates the program to enter ...
+                //...6 random numbers between users specified first/last numbers within new array.
+
+                Console.WriteLine("And now to display our six lucky numbers!");
+                int[] luckyNumb = new int[6];
+
+                Random numGenerate = new Random();
+                for (int j = 0; j < 6; j++)
+                {
+                    luckyNumb[j] = numGenerate.Next(firstNum, lastNum);
+                    Console.WriteLine("Lucky Number: " + luckyNumb[j]);
+                }
+
+                //Step three
+                //Program announces the rate of winnings to the user ( every win gains the user 1$).
+                //Used nested loop to have program confirm if player's guesses are equal to the random numbers generated.
+                //If-else used to add +1$ to winnings for ever iteration of the loop that is found to be equal.
+
+                     //Side-note- As I was still somewhat uncomfortable with nested loops, I realized this section of the project...
+                     //...did not absolutely require a loop. I was sorely tempted to design a 36 part if-else statement to check the winnings ...
+                     //... as that was theoretically simply, thus intellectually easy, if tedious.
+
+                Console.WriteLine("For every number guessed correctly the user will receive 1$, for a total of 6$ for any person who guesses all six lucky numbers correctly!");
+
+                int winnings = 0;
+
+                for (int k = 0; k < 6; k++)
+                {
+                    for (int l = 0; l < 6; l++)
+                    {
+                        if (numbersGuessed[l] == luckyNumb[k])
+                        {
+                            winnings++;
+                        }
+                    }
+                }
+                Console.WriteLine("You got " + winnings + " correct!");
+                Console.WriteLine("You've won " + winnings + "$");
+
+                //Step 4
+                //Ask the user if he/she would like to play the numbers game again. 
+                //If yes, then replay the entire game. Accomplished through massive do-while loop beginning at start of program
+
+                Console.WriteLine("Would you like to play again?!");
+                replay = Console.ReadLine().ToLower();
             }
-            Console.WriteLine("You got" + winnings + " correct!");
-            Console.WriteLine("You've won " + winnings + "$");
+            while (replay == "yes");
 
-            //Step 4
-
-            Console.WriteLine("Would you like to play again?!");
-
-
-
-            
+            if (replay == "no")
+              {
+                Console.WriteLine("Thanks for playing!");
+              }                        
         }
     }
 }
