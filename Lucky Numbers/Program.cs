@@ -19,9 +19,9 @@ namespace Lucky_Numbers
             do
             {
                 Console.WriteLine("Welcome to the world of gambling! Enjoy the following program responsibly!");
-                Console.WriteLine("Please type starting number for number generation.");
+                Console.WriteLine("Please type a starting number for number generation.");
                 int firstNum = int.Parse(Console.ReadLine());
-                Console.WriteLine("Please type ending number for number generation.");
+                Console.WriteLine("Please type an ending number for number generation.");
                 int lastNum = int.Parse(Console.ReadLine());
 
 
@@ -33,14 +33,14 @@ namespace Lucky_Numbers
                 for (int i = 0; i < 6; i++)
                 {
                     numbersGuessed[0] = int.Parse(Console.ReadLine());
-                    if (numbersGuessed[0] >= lastNum)
+                    if (numbersGuessed[0] >= lastNum || numbersGuessed[0] <= firstNum)
                     {
                         Console.WriteLine("Please enter a valid number");
                     }
                 }
 
                 //Step two
-                // This sections creates a new array, and designates the program to enter ...
+                // This sections creates a new array, and, using a for-loop, designates the program to enter ...
                 //...6 random numbers between users specified first/last numbers within new array.
 
                 Console.WriteLine("And now to display our six lucky numbers!");
@@ -56,11 +56,7 @@ namespace Lucky_Numbers
                 //Step three
                 //Program announces the rate of winnings to the user ( every win gains the user 1$).
                 //Used nested loop to have program confirm if player's guesses are equal to the random numbers generated.
-                //If-else used to add +1$ to winnings for ever iteration of the loop that is found to be equal.
-
-                     //Side-note- As I was still somewhat uncomfortable with nested loops, I realized this section of the project...
-                     //...did not absolutely require a loop. I was sorely tempted to design a 36 part if-else statement to check the winnings ...
-                     //... as that was theoretically simply, thus intellectually easy, if tedious.
+                //If-else used to add +1$ to winnings for ever iteration of the loop that is found to be equal.               
 
                 Console.WriteLine("For every number guessed correctly the user will receive 1$, for a total of 6$ for any person who guesses all six lucky numbers correctly!");
 
@@ -81,9 +77,9 @@ namespace Lucky_Numbers
 
                 //Step 4
                 //Ask the user if he/she would like to play the numbers game again. 
-                //If yes, then replay the entire game. Accomplished through massive do-while loop beginning at start of program
+                //If yes, then replay the entire game. Accomplished through massive do-while loop beginning at the start of the program
 
-                Console.WriteLine("Would you like to play again?!");
+                Console.WriteLine("Would you like to play again?");
                 replay = Console.ReadLine().ToLower();
             }
             while (replay == "yes");
